@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>App Monitoreo</title>
+    <link rel="stylesheet" href="./bootstrap.min.css"> 
+    <style>
+      .table{
+        color: white;
+      }
+      .validacio{
+        background: red;
+        
+      }
+
+
+      #ValidacionDeSurco{
+       display: none;
+       
+      }
+      td .button{
+        background: red;
+      }
+
+.validarInput{
+ display: none;
+}
+.status{
+  background: rgb(19, 233, 55);
+  color: red;
+}
+.Eliminar{
+  background-color: rgb(236, 227, 227);
+  text-decoration:underline;
+}
+table .validacionTablaNew{
+  background-color: rgb(19, 192, 19);
+}
+
+ h4{
+margin-top: 40px;
+} 
+button{
+  margin:12px;
+  width: 100%;
+  height: 70px;
+  padding: 19px;
+  border:solid 2px black
+
+}
+input, select{
+  width: 100%;
+  height: 95px;
+  padding: auto;
+  margin: 12px;
+}
+
+.login{
+background-color: azure;
+border-radius: 12px;
+ text-align: center;position: absolute; 
+ z-index: 3; opacity: 0.9; 
+ margin:3px;padding:3px; 
+ height: 300px;
+}
+
+body{
+  background:black; position: relative; z-index: 1;
+}
+
+
+
+
+
+
+
+      
+    </style>
+  </head>
+  <body >
+    <div class=" col-12 login "  >
+      <h1>Ingresa los datos solitados</h1>
+      <input type='number' name="malla "placeholder="Ingresa el numero de malla " class="form-control" id="malla">
+      <input type='number' name="sector "placeholder="Ingresa el numero del sector" class="form-control" id="sector">
+      <button class="btn w-100" id="EnviarLogin">Enviar</button>
+      <button class="btn w-100" id="Cerrar">Cerrar</button>
+    </div>
+<div class="alert alert-danger" role="alert"  id="Advertencia">
+  Esta vacio el campo del surco!
+</div>
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid  ">
+        <a class="navbar-brand" href="#">Monitoreo</a>
+          <a class="navbar-brand" href="#"><button class="btn-primary disa" >Borrars</button></a>
+        <a class="navbar-brand" id="nombre" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg></a>
+      </div>
+    </nav>
+
+    <div class="container-fluid " style="height: 1000px;border: solid 2px white;" >
+      <div class=" row m-2 col-12 p-5 "><input type="search" name="Buscar" placeholder="Buscar por nivel,plaga,status " class="form-control w-100" id="Buscar"></div>
+      <div class="row my-12 h-100">
+        
+        <div class="col-md-12">
+
+          <div class="card w-100">
+            <div class="card-body">
+              <!-- FORM TO ADD TASKS -->
+              <form id="formTask" >
+                <h2>Ingresa el numero del surco</h2>
+                <div class="form-group">
+                  <input type="number" id="Surco" placeholder="INTRODUCE EL NUMERO DEL SURCO" class="form-control">
+                  
+                </div>
+                <div class="form-group">
+                  <h2>Ingresa el numero del polin</h2>
+                  <select class="form-select" aria-label="Default select example" id="Polin">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    
+
+
+                  </select>
+                </div>
+                
+                <div >
+                  <h4>SELECCIONA EL TIPO DE PLAGA</h4>
+                  <select class="form-select" aria-label="Default select example" id="Plaga">
+              
+                      <option value="Araña roja(Tetranychus urticae)">Araña roja</option>
+                      <option value="Gusano">Gusano</option>
+                      <option value="Pulgo Aphis gossypil">Pulgo Aphis</option>
+                        <option value="Macrosiphum euphorbiae">Macrosiphum</option>
+                         <option value="Myzus persicae">Myzus persicae</option>
+                         <option value="Aulacorthum solani">Aulacorthum solani</option>
+                         <option value="Gusano soldado(spodoptera exigua)">Gusano soldado</option>
+                          <option value="Gusano Falso Medidor(Trichoplusia ni) ">Gusano falso medidor</option>
+                           <option value="Mosca blanca(Trialeurades vaporariorum)">Gusano falso medidor</option>
+                    </select>
+                </div>
+                <div >
+                  <h4>Selecciona el lado</h4>
+                  <select class="form-select" id="Lado">
+              
+                      <option value="Norte">Norte</option>
+                      <option value="Sur">Sur</option>
+                
+                    </select>
+                </div>
+                <div >
+
+                  <h4>Nivel</h4>
+                  <select class="form-select" aria-label="Default select example" id="Nivel">
+              
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                  
+                    </select>
+                   
+                    <h4>Nivel de benefico</h4>
+                    <input type="number" class="form-select" aria-label="Default select example" name="number" id="Benefico" placeholder="Ingresa los datos de benefico">
+                </div>
+                <button type="button" class="btn btn-primary btn-block" id="Enviar">Save</button>
+              </form>
+           
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div id="tasks" class="col-12">
+            
+            <div id="MallaYSector"></div>
+
+            <button class="btn-primary col-12" id="Finalizar">Finalizar malla</button>
+            <button class="btn-primary col-12" id="FinalizarEliminar">Eliminar</button>
+         <div id="Nota" class="table">
+
+           </div>
+         
+          </div>
+        </div>
+        <footer class="footer m-5"><ul><li>Facebok</li><li>Githu</li></ul></footer>
+      </div>
+    
+    </div>
+   <script src="./app.js"></script> 
+    <script>
+ 
+
+
+    </script>
+  </body>
+</html>
